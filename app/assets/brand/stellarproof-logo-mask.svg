@@ -1,0 +1,18 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="620" height="128" viewBox="0 0 620 128" role="img" aria-labelledby="title desc">
+  <title id="title">StellarProof logo concept A</title>
+  <desc id="desc">A green watchful mask with a star pupil beside the StellarProof wordmark.</desc>
+  <defs>
+    <pattern id="dots" width="8" height="8" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.1" fill="#0B0501" opacity=".34"/>
+    </pattern>
+  </defs>
+  <rect x="8" y="18" width="104" height="92" rx="28" fill="#82D84F" stroke="#0B0501" stroke-width="7"/>
+  <rect x="8" y="18" width="104" height="92" rx="28" fill="url(#dots)"/>
+  <path d="M25 58c10-16 29-20 45-8 14-11 28-8 38 7-12 10-27 15-43 15-15 0-29-5-40-14Z" fill="#0B0501"/>
+  <ellipse cx="50" cy="58" rx="12" ry="9" fill="#FFFFFF"/>
+  <ellipse cx="84" cy="58" rx="12" ry="9" fill="#FFFFFF"/>
+  <circle cx="50" cy="58" r="4" fill="#FF6803"/>
+  <circle cx="84" cy="58" r="4" fill="#FF6803"/>
+  <path d="M60 83l6-12 6 12 12 6-12 6-6 12-6-12-12-6 12-6Z" fill="#FFFFFF" stroke="#0B0501" stroke-width="4"/>
+  <text x="136" y="86" fill="#0B0501" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="900">StellarProof</text>
+</svg>

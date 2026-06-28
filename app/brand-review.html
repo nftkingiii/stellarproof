@@ -1,0 +1,55 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Brand Review | StellarProof</title>
+    <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .brand-review { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 28px 0 72px; }
+      .brand-review h1 { color: var(--black); text-shadow: none; width: min(900px, 100%); }
+      .brand-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 28px; }
+      .brand-card { border: 2px solid var(--black); border-radius: 8px; background: var(--white); padding: 18px; box-shadow: 7px 7px 0 var(--black); }
+      .brand-card img { display: block; width: 100%; height: auto; margin: 12px 0 18px; }
+      .brand-card strong { display: block; color: var(--rust); font-size: 13px; text-transform: uppercase; }
+      .favicon-row { display: flex; align-items: center; gap: 14px; margin-top: 28px; }
+      .favicon-row img { width: 64px; height: 64px; }
+      @media (max-width: 820px) { .brand-grid { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <main class="brand-review">
+      <nav class="topbar" aria-label="Project">
+        <a class="brand brand-lockup" href="/"><img src="assets/brand/stellarproof-logo-mask.svg" alt="StellarProof" /></a>
+        <div class="nav-links"><a href="/">Landing</a><a href="proof.html">Proof lab</a></div>
+      </nav>
+      <p class="eyebrow">Brand options</p>
+      <h1>Pick the mark that feels most like StellarProof.</h1>
+      <div class="brand-grid">
+        <section class="brand-card">
+          <strong>Option A: Watchful mask</strong>
+          <img src="assets/brand/stellarproof-logo-mask.svg" alt="StellarProof watchful mask logo" />
+          <p>Best fit for the current hero: surreal, private, watchful, comic-book security.</p>
+        </section>
+        <section class="brand-card">
+          <strong>Option B: Proof star</strong>
+          <img src="assets/brand/stellarproof-logo-star.svg" alt="StellarProof proof star logo" />
+          <p>More badge-like and hackathon-friendly, with the verification signal up front.</p>
+        </section>
+        <section class="brand-card">
+          <strong>Option C: Invoice lock</strong>
+          <img src="assets/brand/stellarproof-logo-lock.svg" alt="StellarProof invoice lock logo" />
+          <p>More literal: invoice privacy, underwriting, and Stellar movement in one mark.</p>
+        </section>
+      </div>
+      <div class="panel favicon-row">
+        <img src="assets/brand/favicon.svg" alt="Proposed StellarProof favicon" />
+        <div>
+          <strong>Proposed favicon</strong>
+          <p>Derived from Option A so browser tabs stay recognizable at small sizes.</p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

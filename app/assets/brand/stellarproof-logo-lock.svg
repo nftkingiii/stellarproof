@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="128" viewBox="0 0 520 128" role="img" aria-labelledby="title desc">
+  <title id="title">StellarProof logo concept C</title>
+  <desc id="desc">An invoice card with a lock and orbit mark beside the StellarProof wordmark.</desc>
+  <rect x="9" y="18" width="106" height="92" rx="16" fill="#BFBFBF" stroke="#0B0501" stroke-width="8"/>
+  <path d="M27 40h57M27 58h44M27 76h34" stroke="#0B0501" stroke-width="6" stroke-linecap="round"/>
+  <rect x="61" y="61" width="42" height="34" rx="9" fill="#FF6803" stroke="#0B0501" stroke-width="6"/>
+  <path d="M71 62v-9c0-12 22-12 22 0v9" fill="none" stroke="#0B0501" stroke-width="6" stroke-linecap="round"/>
+  <path d="M154 33c58-18 118-8 153 25M309 74c-48 32-112 31-158 3" fill="none" stroke="#AE3A02" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="312" cy="75" r="8" fill="#82D84F" stroke="#0B0501" stroke-width="4"/>
+  <text x="151" y="91" fill="#0B0501" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="800">StellarProof</text>
+</svg>

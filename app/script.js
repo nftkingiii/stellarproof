@@ -1,4 +1,4 @@
-async function sha256Hex(text) {
+﻿async function sha256Hex(text) {
   const data = new TextEncoder().encode(text);
   const digest = await crypto.subtle.digest("SHA-256", data);
   return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("");
@@ -73,7 +73,13 @@ function render(proof) {
   document.querySelector("#attestation").textContent = shortHash(proof.attestationId);
 }
 
-document.querySelector("#portfolio-form").addEventListener("submit", async (event) => {
-  event.preventDefault();
-  render(await proveEligibility(readPortfolio()));
-});
+const portfolioForm = document.querySelector("#portfolio-form");
+
+if (portfolioForm) {
+  portfolioForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    render(await proveEligibility(readPortfolio()));
+  });
+}
+
+

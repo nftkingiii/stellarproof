@@ -1,0 +1,114 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Proof Lab | StellarProof</title>
+    <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="proof-page">
+    <main>
+      <section class="proof-lab proof-page-shell" aria-labelledby="lab-title">
+        <nav class="topbar proof-topbar" aria-label="Project">
+          <a class="brand brand-lockup" href="/">
+            <img src="assets/brand/stellarproof-logo-mask.svg" alt="StellarProof" />
+          </a>
+          <div class="nav-links">
+            <a href="/">Landing</a>
+            <a href="https://github.com/nftkingiii/stellarproof">GitHub</a>
+          </div>
+        </nav>
+
+        <div class="section-heading proof-heading">
+          <p class="eyebrow">Verifiable off-chain compute</p>
+          <h1 id="lab-title">A private portfolio enters. A public attestation leaves.</h1>
+          <p>
+            Adjust the private invoice data, generate the local proof-flow output, and inspect the
+            public journal values that would be submitted to Stellar.
+          </p>
+        </div>
+
+        <div class="workspace">
+          <form id="portfolio-form" class="panel input-panel">
+            <h2>Private Inputs</h2>
+            <label>
+              Applicant Stellar account
+              <input id="applicant" value="GDEMO4QPOCINVOICEFACTORING7STELLARTESTNET" />
+            </label>
+            <div class="invoice-grid">
+              <label>
+                Invoice A
+                <input data-invoice="amount" value="18000" type="number" />
+              </label>
+              <label>
+                Age
+                <input data-invoice="age" value="18" type="number" />
+              </label>
+              <label>
+                Debtor rating
+                <input data-invoice="rating" value="91" type="number" />
+              </label>
+              <label>
+                Invoice B
+                <input data-invoice="amount" value="12500" type="number" />
+              </label>
+              <label>
+                Age
+                <input data-invoice="age" value="27" type="number" />
+              </label>
+              <label>
+                Debtor rating
+                <input data-invoice="rating" value="84" type="number" />
+              </label>
+              <label>
+                Invoice C
+                <input data-invoice="amount" value="22000" type="number" />
+              </label>
+              <label>
+                Age
+                <input data-invoice="age" value="34" type="number" />
+              </label>
+              <label>
+                Debtor rating
+                <input data-invoice="rating" value="88" type="number" />
+              </label>
+            </div>
+            <button type="submit">Generate proof</button>
+          </form>
+
+          <section class="panel result">
+            <h2>Public Attestation</h2>
+            <dl>
+              <div>
+                <dt>Eligibility</dt>
+                <dd id="eligible">Pending</dd>
+              </div>
+              <div>
+                <dt>Total value</dt>
+                <dd id="total">$0</dd>
+              </div>
+              <div>
+                <dt>Risk score</dt>
+                <dd id="score">0</dd>
+              </div>
+              <div>
+                <dt>Input commitment</dt>
+                <dd id="commitment">-</dd>
+              </div>
+              <div>
+                <dt>Receipt</dt>
+                <dd id="receipt">-</dd>
+              </div>
+              <div>
+                <dt>Stellar attestation</dt>
+                <dd id="attestation">-</dd>
+              </div>
+            </dl>
+          </section>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

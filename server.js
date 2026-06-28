@@ -1,4 +1,4 @@
-const http = require("http");
+﻿const http = require("http");
 const fs = require("fs");
 const path = require("path");
 
@@ -10,6 +10,7 @@ const contentTypes = {
   ".css": "text/css; charset=utf-8",
   ".js": "application/javascript; charset=utf-8",
   ".json": "application/json; charset=utf-8",
+  ".svg": "image/svg+xml; charset=utf-8",
   ".txt": "text/plain; charset=utf-8",
 };
 
@@ -53,3 +54,4 @@ const server = http.createServer((req, res) => {
 server.listen(port, "0.0.0.0", () => {
   console.log(`StellarProof listening on port ${port}`);
 });
+

@@ -1,107 +1,60 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>StellarProof</title>
+    <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main class="shell">
-      <section class="hero">
-        <div>
-          <p class="eyebrow">Stellar + RISC Zero</p>
-          <h1>StellarProof</h1>
-          <p class="lede">
-            Prove an invoice portfolio passed off-chain underwriting without publishing the
-            invoice-level data.
-          </p>
-        </div>
-        <div class="status">
-          <span>Demo mode</span>
-          <strong>Ready</strong>
-        </div>
-      </section>
-
-      <section class="workspace">
-        <form id="portfolio-form" class="panel">
-          <h2>Private Inputs</h2>
-          <label>
-            Applicant Stellar account
-            <input id="applicant" value="GDEMO4QPOCINVOICEFACTORING7STELLARTESTNET" />
-          </label>
-          <div class="invoice-grid">
-            <label>
-              Invoice A
-              <input data-invoice="amount" value="18000" type="number" />
-            </label>
-            <label>
-              Age
-              <input data-invoice="age" value="18" type="number" />
-            </label>
-            <label>
-              Debtor rating
-              <input data-invoice="rating" value="91" type="number" />
-            </label>
-            <label>
-              Invoice B
-              <input data-invoice="amount" value="12500" type="number" />
-            </label>
-            <label>
-              Age
-              <input data-invoice="age" value="27" type="number" />
-            </label>
-            <label>
-              Debtor rating
-              <input data-invoice="rating" value="84" type="number" />
-            </label>
-            <label>
-              Invoice C
-              <input data-invoice="amount" value="22000" type="number" />
-            </label>
-            <label>
-              Age
-              <input data-invoice="age" value="34" type="number" />
-            </label>
-            <label>
-              Debtor rating
-              <input data-invoice="rating" value="88" type="number" />
-            </label>
+    <main>
+      <section class="landing-shell" aria-labelledby="hero-title">
+        <nav class="topbar" aria-label="Project">
+          <a class="brand brand-lockup" href="/">
+            <img src="assets/brand/stellarproof-logo-mask.svg" alt="StellarProof" />
+          </a>
+          <div class="nav-links">
+            <a href="proof.html">Proof lab</a>
+            <a href="https://github.com/nftkingiii/stellarproof">GitHub</a>
           </div>
-          <button type="submit">Generate proof</button>
-        </form>
+        </nav>
 
-        <section class="panel result">
-          <h2>Public Attestation</h2>
-          <dl>
-            <div>
-              <dt>Eligibility</dt>
-              <dd id="eligible">Pending</dd>
+        <div class="hero-frame">
+          <img
+            class="hero-art"
+            src="assets/stellarproof-comic-hero.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <div class="ink-noise" aria-hidden="true"></div>
+          <div class="mask-blink" aria-hidden="true"></div>
+          <div class="drift drift-a" aria-hidden="true">***</div>
+          <div class="drift drift-b" aria-hidden="true">?</div>
+          <div class="drift drift-c" aria-hidden="true">*</div>
+          <div class="drift drift-d" aria-hidden="true">...</div>
+
+          <div class="hero-copy">
+            <p class="eyebrow">Stellar + RISC Zero</p>
+            <h1 id="hero-title">Private invoices. Public proof.</h1>
+            <p class="lede">
+              StellarProof lets a business prove an off-chain underwriting policy ran correctly
+              without exposing the invoice data that powered the decision.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="proof.html">Generate proof</a>
+              <a class="button ghost" href="https://github.com/nftkingiii/stellarproof">View source</a>
             </div>
-            <div>
-              <dt>Total value</dt>
-              <dd id="total">$0</dd>
-            </div>
-            <div>
-              <dt>Risk score</dt>
-              <dd id="score">0</dd>
-            </div>
-            <div>
-              <dt>Input commitment</dt>
-              <dd id="commitment">-</dd>
-            </div>
-            <div>
-              <dt>Receipt</dt>
-              <dd id="receipt">-</dd>
-            </div>
-            <div>
-              <dt>Stellar attestation</dt>
-              <dd id="attestation">-</dd>
-            </div>
-          </dl>
-        </section>
+          </div>
+
+          <div class="proof-strip" aria-label="Build status">
+            <span>RISC Zero proof</span>
+            <strong>Generated on Linux</strong>
+            <span>Stellar attestor</span>
+            <strong>Wasm artifact ready</strong>
+          </div>
+        </div>
       </section>
     </main>
-    <script src="script.js"></script>
   </body>
 </html>
