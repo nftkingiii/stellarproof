@@ -1,0 +1,62 @@
+name: StellarProof Linux Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build-and-prove:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Linux dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential curl git pkg-config libssl-dev protobuf-compiler
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32v1-none
+
+      - name: Cache Cargo
+        uses: Swatinem/rust-cache@v2
+
+      - name: Install RISC Zero toolchain
+        run: |
+          curl -L https://risczero.com/install | bash
+          echo "$HOME/.risc0/bin" >> "$GITHUB_PATH"
+          "$HOME/.risc0/bin/rzup" install
+          "$HOME/.risc0/bin/rzup" install risc0-groth16
+
+      - name: Test Node demo logic
+        run: npm test
+
+      - name: Test attestor contract
+        run: cargo test -p stellarproof-attestor
+
+      - name: Build attestor Wasm
+        run: cargo build -p stellarproof-attestor --target wasm32v1-none --release
+
+      - name: Generate RISC Zero Groth16 proof
+        env:
+          RISC0_DEV_MODE: "0"
+        run: cargo run -p stellarproof-host --release
+
+      - name: Upload proof artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: stellarproof-proof
+          path: proof.txt
+
+      - name: Upload attestor Wasm
+        uses: actions/upload-artifact@v4
+        with:
+          name: stellarproof-attestor-wasm
+          path: target/wasm32v1-none/release/stellarproof_attestor.wasm

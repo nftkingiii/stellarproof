@@ -1,0 +1,19 @@
+{
+  "name": "stellarproof",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Verifiable off-chain invoice eligibility prototype for Stellar + RISC Zero.",
+  "scripts": {
+    "demo": "node scripts/demo.js",
+    "start": "node server.js",
+    "test": "node scripts/demo.js --test"
+  },
+  "keywords": [
+    "stellar",
+    "soroban",
+    "risc0",
+    "zk",
+    "hackathon"
+  ],
+  "license": "Apache-2.0"
+}

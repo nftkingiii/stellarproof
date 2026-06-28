@@ -1,0 +1,15 @@
+[package]
+name = "stellarproof-attestor"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+soroban-sdk = { workspace = true }
+risc0-interface = { path = "../../../work/vendor/stellar-risc0-verifier/contracts/interface" }
+
+[dev-dependencies]
+soroban-sdk = { workspace = true, features = ["testutils"] }
