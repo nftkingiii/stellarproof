@@ -3,6 +3,7 @@ members = [
     "contracts/stellarproof_attestor",
     "risc0/host",
     "risc0/methods",
+    "vendor/risc0-interface",
 ]
 resolver = "2"
 
