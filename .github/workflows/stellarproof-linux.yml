@@ -1,10 +1,15 @@
-name: StellarProof Linux Build
+﻿name: StellarProof Linux Build
 
 on:
   workflow_dispatch:
   push:
     branches: [main]
+    paths-ignore:
+      - "app/proofs/latest-proof.json"
   pull_request:
+
+permissions:
+  contents: write
 
 jobs:
   build-and-prove:
@@ -49,11 +54,33 @@ jobs:
           RISC0_DEV_MODE: "0"
         run: cargo run -p stellarproof-host --release
 
+      - name: Publish proof JSON for Railway
+        run: node scripts/publish-proof-json.js
+
+      - name: Commit latest proof JSON
+        if: github.event_name != 'pull_request'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/proofs/latest-proof.json
+          if git diff --cached --quiet; then
+            echo "latest-proof.json unchanged"
+          else
+            git commit -m "Publish latest proof [skip ci]"
+            git push
+          fi
+
       - name: Upload proof artifact
         uses: actions/upload-artifact@v4
         with:
           name: stellarproof-proof
           path: proof.txt
+
+      - name: Upload latest proof JSON
+        uses: actions/upload-artifact@v4
+        with:
+          name: stellarproof-latest-proof-json
+          path: app/proofs/latest-proof.json
 
       - name: Upload attestor Wasm
         uses: actions/upload-artifact@v4

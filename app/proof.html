@@ -107,8 +107,47 @@
             </dl>
           </section>
         </div>
+
+        <section class="panel linux-proof-panel" aria-labelledby="linux-proof-title">
+          <div>
+            <p class="eyebrow">Connected Linux proof</p>
+            <h2 id="linux-proof-title">Latest RISC Zero Groth16 proof</h2>
+            <p class="linux-proof-copy">
+              This panel is populated from <code>app/proofs/latest-proof.json</code>, which GitHub
+              Actions updates after the Linux proof job succeeds.
+            </p>
+          </div>
+          <dl class="linux-proof-grid">
+            <div>
+              <dt>Status</dt>
+              <dd id="linux-proof-status">Loading</dd>
+            </div>
+            <div>
+              <dt>Generated</dt>
+              <dd id="linux-proof-generated">-</dd>
+            </div>
+            <div>
+              <dt>Image ID</dt>
+              <dd id="linux-proof-image-id">-</dd>
+            </div>
+            <div>
+              <dt>Journal digest</dt>
+              <dd id="linux-proof-journal-digest">-</dd>
+            </div>
+            <div>
+              <dt>Proof hash</dt>
+              <dd id="linux-proof-hash">-</dd>
+            </div>
+            <div>
+              <dt>Workflow run</dt>
+              <dd id="linux-proof-run">-</dd>
+            </div>
+          </dl>
+        </section>
       </section>
     </main>
     <script src="script.js"></script>
   </body>
 </html>
+
+

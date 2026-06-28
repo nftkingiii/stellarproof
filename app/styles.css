@@ -566,3 +566,45 @@ dd {
     margin-bottom: 26px;
   }
 }
+
+.linux-proof-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
+  gap: 24px;
+  margin-top: 24px;
+  background: #fffaf2;
+}
+
+.linux-proof-copy {
+  margin-bottom: 0;
+  color: #452216;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.linux-proof-copy code {
+  color: var(--rust);
+  font-weight: 900;
+}
+
+.linux-proof-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.linux-proof-grid dd a {
+  color: var(--rust);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+#linux-proof-status.pass {
+  color: #26720f;
+}
+
+@media (max-width: 820px) {
+  .linux-proof-panel,
+  .linux-proof-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -83,3 +83,42 @@ if (portfolioForm) {
 }
 
 
+
+async function loadLatestLinuxProof() {
+  const status = document.querySelector("#linux-proof-status");
+  if (!status) return;
+
+  const setText = (selector, value) => {
+    const element = document.querySelector(selector);
+    if (element) element.textContent = value || "-";
+  };
+
+  try {
+    const response = await fetch("proofs/latest-proof.json", { cache: "no-store" });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const latest = await response.json();
+
+    if (latest.status !== "ready" || !latest.proof) {
+      status.textContent = latest.status === "pending" ? "Pending workflow run" : "Unavailable";
+      setText("#linux-proof-generated", latest.message || "Run GitHub Actions to publish proof output.");
+      return;
+    }
+
+    status.textContent = "Ready";
+    status.className = "pass";
+    setText("#linux-proof-generated", new Date(latest.updatedAt).toLocaleString());
+    setText("#linux-proof-image-id", shortHash(latest.proof.imageId));
+    setText("#linux-proof-journal-digest", shortHash(latest.proof.journalDigest));
+    setText("#linux-proof-hash", shortHash(latest.proof.proofTxtSha256));
+
+    const run = document.querySelector("#linux-proof-run");
+    if (run && latest.runUrl) {
+      run.innerHTML = `<a href="${latest.runUrl}">GitHub Actions run</a>`;
+    }
+  } catch (error) {
+    status.textContent = "Not published yet";
+    setText("#linux-proof-generated", "Run the StellarProof Linux Build workflow.");
+  }
+}
+
+loadLatestLinuxProof();
