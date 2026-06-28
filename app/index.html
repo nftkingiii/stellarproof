@@ -15,6 +15,7 @@
             <img src="assets/brand/stellarproof-logo-mask.svg" alt="StellarProof" />
           </a>
           <div class="nav-links">
+            <a href="#how-it-works">How it works</a>
             <a href="proof.html">Proof lab</a>
             <a href="https://github.com/nftkingiii/stellarproof">GitHub</a>
           </div>
@@ -38,12 +39,12 @@
             <p class="eyebrow">Stellar + RISC Zero</p>
             <h1 id="hero-title">Private invoices. Public proof.</h1>
             <p class="lede">
-              StellarProof lets a business prove an off-chain underwriting policy ran correctly
-              without exposing the invoice data that powered the decision.
+              StellarProof proves an invoice portfolio passed off-chain underwriting without
+              publishing the invoice-level data that powered the decision.
             </p>
             <div class="hero-actions">
               <a class="button primary" href="proof.html">Generate proof</a>
-              <a class="button ghost" href="https://github.com/nftkingiii/stellarproof">View source</a>
+              <a class="button ghost" href="#latest-proof">See latest proof</a>
             </div>
           </div>
 
@@ -55,6 +56,154 @@
           </div>
         </div>
       </section>
+
+      <section id="latest-proof" class="story-section live-proof-section" aria-labelledby="latest-proof-title">
+        <div class="section-kicker">Try it live</div>
+        <div class="story-split">
+          <div>
+            <h2 id="latest-proof-title">The app is connected to the real proof worker.</h2>
+            <p>
+              Railway hosts the public interface. GitHub Actions runs the Linux RISC Zero Groth16
+              prover, publishes the latest proof JSON, and Railway displays it here after redeploy.
+            </p>
+          </div>
+          <div class="panel live-proof-card">
+            <div class="terminal-bar">
+              <span>GET</span>
+              <code>/proofs/latest-proof.json</code>
+            </div>
+            <dl class="linux-proof-grid compact-proof-grid">
+              <div>
+                <dt>Status</dt>
+                <dd id="linux-proof-status">Loading</dd>
+              </div>
+              <div>
+                <dt>Generated</dt>
+                <dd id="linux-proof-generated">-</dd>
+              </div>
+              <div>
+                <dt>Image ID</dt>
+                <dd id="linux-proof-image-id">-</dd>
+              </div>
+              <div>
+                <dt>Journal digest</dt>
+                <dd id="linux-proof-journal-digest">-</dd>
+              </div>
+              <div>
+                <dt>Proof hash</dt>
+                <dd id="linux-proof-hash">-</dd>
+              </div>
+              <div>
+                <dt>Workflow run</dt>
+                <dd id="linux-proof-run">-</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section id="how-it-works" class="story-section" aria-labelledby="how-title">
+        <div class="section-kicker">Audit in private. Attest in public.</div>
+        <h2 id="how-title">From private invoices to a verifiable Stellar attestation.</h2>
+        <p class="section-lede">
+          The browser demo is instant. The real cryptographic proof runs asynchronously on Linux,
+          then becomes visible to the web app as a published proof artifact.
+        </p>
+        <div class="step-grid">
+          <article class="panel step-card">
+            <span>01</span>
+            <h3>Submit</h3>
+            <p>Enter invoice amounts, age, debtor rating, and applicant account in the proof lab.</p>
+          </article>
+          <article class="panel step-card">
+            <span>02</span>
+            <h3>Prove</h3>
+            <p>RISC Zero executes the underwriting policy off-chain and emits a public journal.</p>
+          </article>
+          <article class="panel step-card">
+            <span>03</span>
+            <h3>Attest</h3>
+            <p>A Soroban contract verifies the receipt through the RISC Zero verifier router and stores the result.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="story-section features-section" aria-labelledby="features-title">
+        <div class="section-kicker">Features</div>
+        <h2 id="features-title">Useful proof infrastructure, not a decorative ZK sticker.</h2>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span>Privacy</span>
+            <h3>Invoice details stay private</h3>
+            <p>The public output reveals eligibility, score, commitment, and totals, not invoice-level data.</p>
+          </article>
+          <article class="feature-card">
+            <span>Proof</span>
+            <h3>Groth16 receipt generated on Linux</h3>
+            <p>GitHub Actions runs the actual RISC Zero proving flow and publishes the latest proof hash.</p>
+          </article>
+          <article class="feature-card">
+            <span>Stellar</span>
+            <h3>Designed for Soroban verification</h3>
+            <p>The attestor contract calls the verifier router and stores attestations by journal commitment.</p>
+          </article>
+          <article class="feature-card">
+            <span>UX</span>
+            <h3>Fast app, heavy proof worker</h3>
+            <p>Railway stays responsive while the Linux prover handles the expensive cryptographic work.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="story-section comparison-section" aria-labelledby="comparison-title">
+        <div class="section-kicker">Comparison</div>
+        <h2 id="comparison-title">What StellarProof ships that a normal demo does not.</h2>
+        <div class="comparison-table panel">
+          <div class="comparison-row header"><span></span><strong>StellarProof</strong><strong>Basic web demo</strong><strong>Manual audit</strong></div>
+          <div class="comparison-row"><span>Private inputs hidden from public view</span><strong>Yes</strong><strong>Partial</strong><strong>No</strong></div>
+          <div class="comparison-row"><span>Real RISC Zero proof artifact</span><strong>Yes</strong><strong>No</strong><strong>No</strong></div>
+          <div class="comparison-row"><span>Stellar/Soroban verification boundary</span><strong>Yes</strong><strong>No</strong><strong>No</strong></div>
+          <div class="comparison-row"><span>Public proof status in the app</span><strong>Yes</strong><strong>No</strong><strong>No</strong></div>
+          <div class="comparison-row"><span>Usable without local WSL</span><strong>Yes</strong><strong>Yes</strong><strong>N/A</strong></div>
+        </div>
+      </section>
+
+      <section class="story-section architecture-section" aria-labelledby="architecture-title">
+        <div class="section-kicker">Architecture</div>
+        <h2 id="architecture-title">How the engine works.</h2>
+        <div class="architecture-grid">
+          <article><span>01</span><h3>Input</h3><p>Private invoice portfolio and applicant account.</p></article>
+          <article><span>02</span><h3>Guest</h3><p>Rust policy computes risk score, eligibility, and commitment inside RISC Zero.</p></article>
+          <article><span>03</span><h3>Host</h3><p>Linux workflow produces Groth16 seal, image ID, journal digest, and journal bytes.</p></article>
+          <article><span>04</span><h3>Publish</h3><p>Actions commits <code>latest-proof.json</code> so Railway can read the latest proof.</p></article>
+          <article><span>05</span><h3>Verify</h3><p>Soroban attestor is ready to call the Stellar RISC Zero verifier router.</p></article>
+        </div>
+      </section>
+
+      <section class="story-section cta-section" aria-labelledby="cta-title">
+        <div>
+          <div class="section-kicker">Get started</div>
+          <h2 id="cta-title">Generate a local attestation now. Inspect the real proof when Actions finishes.</h2>
+          <p>The proof lab shows the product flow instantly and displays the connected Linux proof artifact below it.</p>
+          <div class="hero-actions left-actions">
+            <a class="button primary" href="proof.html">Open proof lab</a>
+            <a class="button ghost" href="https://github.com/nftkingiii/stellarproof/actions">View Actions</a>
+          </div>
+        </div>
+        <div class="panel terminal-card">
+          <div class="terminal-bar"><span>stellarproof — terminal</span></div>
+          <code>$ npm test</code>
+          <code>✓ StellarProof demo test passed</code>
+          <code>$ cargo run -p stellarproof-host --release</code>
+          <code>✓ wrote proof.txt: seal, image_id, journal_digest, journal_bytes</code>
+        </div>
+      </section>
     </main>
+    <footer class="site-footer">
+      <a class="brand brand-lockup" href="/"><img src="assets/brand/stellarproof-logo-mask.svg" alt="StellarProof" /></a>
+      <p>Verifiable off-chain underwriting for Stellar. Private inputs, public proof.</p>
+      <nav><a href="proof.html">Proof lab</a><a href="brand-review.html">Brand</a><a href="https://github.com/nftkingiii/stellarproof">GitHub</a></nav>
+    </footer>
+    <script src="script.js"></script>
   </body>
 </html>
