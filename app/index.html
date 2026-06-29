@@ -63,8 +63,8 @@
           <div>
             <h2 id="latest-proof-title">The app is connected to the real proof worker.</h2>
             <p>
-              Railway hosts the public interface. GitHub Actions runs the Linux RISC Zero Groth16
-              prover, publishes the latest proof JSON, and Railway displays it here after redeploy.
+              Vercel hosts the public interface. GitHub Actions runs the Linux RISC Zero Groth16
+              prover, publishes the latest proof JSON, and the frontend reads the result back when the workflow finishes.
             </p>
           </div>
           <div class="panel live-proof-card">
@@ -150,7 +150,7 @@
           <article class="feature-card">
             <span>UX</span>
             <h3>Fast app, heavy proof worker</h3>
-            <p>Railway stays responsive while the Linux prover handles the expensive cryptographic work.</p>
+            <p>The hosted frontend stays responsive while GitHub Actions handles the expensive cryptographic work.</p>
           </article>
         </div>
       </section>
@@ -175,7 +175,7 @@
           <article><span>01</span><h3>Input</h3><p>Private invoice portfolio and applicant account.</p></article>
           <article><span>02</span><h3>Guest</h3><p>Rust policy computes risk score, eligibility, and commitment inside RISC Zero.</p></article>
           <article><span>03</span><h3>Host</h3><p>Linux workflow produces Groth16 seal, image ID, journal digest, and journal bytes.</p></article>
-          <article><span>04</span><h3>Publish</h3><p>Actions commits <code>latest-proof.json</code> so Railway can read the latest proof.</p></article>
+          <article><span>04</span><h3>Publish</h3><p>Actions commits <code>latest-proof.json</code> so the frontend can read the latest proof.</p></article>
           <article><span>05</span><h3>Verify</h3><p>Soroban attestor is ready to call the Stellar RISC Zero verifier router.</p></article>
         </div>
       </section>
@@ -207,3 +207,5 @@
     <script src="script.js"></script>
   </body>
 </html>
+
+

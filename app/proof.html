@@ -74,7 +74,10 @@
                 <input data-invoice="rating" value="88" type="number" />
               </label>
             </div>
-            <button type="submit">Generate proof</button>
+            <button id="generate-proof-button" type="submit">Generate proof</button>
+            <p id="remote-proof-message" class="remote-proof-message" role="status">
+              Runs the local proof preview and starts the Linux RISC Zero workflow on GitHub.
+            </p>
           </form>
 
           <section class="panel result">
@@ -113,8 +116,8 @@
             <p class="eyebrow">Connected Linux proof</p>
             <h2 id="linux-proof-title">Latest RISC Zero Groth16 proof</h2>
             <p class="linux-proof-copy">
-              This panel is populated from <code>app/proofs/latest-proof.json</code>, which GitHub
-              Actions updates after the Linux proof job succeeds.
+              This panel follows the GitHub Actions proof worker. When the workflow succeeds, the
+              latest proof JSON is read back into the app.
             </p>
           </div>
           <dl class="linux-proof-grid">
@@ -149,6 +152,8 @@
     <script src="script.js"></script>
   </body>
 </html>
+
+
 
 
 
