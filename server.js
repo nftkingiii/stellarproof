@@ -1,6 +1,9 @@
-﻿const http = require("http");
+const http = require("http");
 const fs = require("fs");
 const path = require("path");
+
+const proofStatus = require("./api/proof-status");
+const proofTrigger = require("./api/proof-trigger");
 
 const appDir = path.join(__dirname, "app");
 const port = Number(process.env.PORT || 3000);
@@ -11,6 +14,8 @@ const contentTypes = {
   ".js": "application/javascript; charset=utf-8",
   ".json": "application/json; charset=utf-8",
   ".svg": "image/svg+xml; charset=utf-8",
+  ".png": "image/png",
+  ".webp": "image/webp",
   ".txt": "text/plain; charset=utf-8",
 };
 
@@ -28,6 +33,17 @@ function resolveRequestPath(urlPath) {
 
 const server = http.createServer((req, res) => {
   const reqUrl = new URL(req.url, `http://${req.headers.host || "localhost"}`);
+
+  if (reqUrl.pathname === "/api/proof-status") {
+    proofStatus(req, res);
+    return;
+  }
+
+  if (reqUrl.pathname === "/api/proof-trigger") {
+    proofTrigger(req, res);
+    return;
+  }
+
   const filePath = resolveRequestPath(reqUrl.pathname);
 
   fs.readFile(filePath, (error, body) => {
@@ -54,4 +70,3 @@ const server = http.createServer((req, res) => {
 server.listen(port, "0.0.0.0", () => {
   console.log(`StellarProof listening on port ${port}`);
 });
-
