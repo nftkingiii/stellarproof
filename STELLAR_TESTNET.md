@@ -11,9 +11,12 @@ Network: Stellar testnet
 
 - Timelock controller: `CD5KZDDHPNHLYS3M3QNJPV3OFZL7BOPKJ2YMIJPCWXNL7WMUK2N6RZVL`
 - Verifier router: `CCUUSMLUDFY7VRC3WEKBGXMID7BJRVHZUFBTYGGIHSQCHUEKQWA7U3ET`
+- Groth16 verifier: `CBTDE573YDNCYZQSM2QXOUKKZSR4H7KMMUYEID6OVP7DAIW6T6PKAKGD`
+- Emergency-stop wrapper: `CC6TBSFX3YSVB4HG2MITTMWDO3XWMRDX5FCFBWTKSIEIPHGCRSCHZ645`
 - RISC Zero Groth16 selector: `73c457ba`
+- Router entry: `{"Active":"CC6TBSFX3YSVB4HG2MITTMWDO3XWMRDX5FCFBWTKSIEIPHGCRSCHZ645"}`
 
-Router deployment completed through Nethermind's `stellar-risc0-verifier` scripts.
+Router deployment completed through Nethermind's `stellar-risc0-verifier` scripts. The Groth16 verifier was wrapped by the emergency-stop contract and registered in the router for selector `73c457ba`.
 
 ## StellarProof Attestor
 
@@ -23,18 +26,18 @@ Router deployment completed through Nethermind's `stellar-risc0-verifier` script
 - Initialized router: `CCUUSMLUDFY7VRC3WEKBGXMID7BJRVHZUFBTYGGIHSQCHUEKQWA7U3ET`
 - Initialized image ID: `496d8915abb5a792baf842a5dfcc5df143e4cad5ad8469397eea0a15c8b91f3c`
 
-## Remaining On-Chain Step
+## Verification Check
 
-Register the deployed Groth16 verifier with the router for selector `73c457ba`.
-
-From the sibling Nethermind verifier repo:
+The router was queried directly:
 
 ```bash
-cd /c/Users/HP/Documents/Codex/2026-06-27/c/stellar-risc0-verifier
-./scripts/manage.sh deploy-verifier -n testnet -a stellarproof
-./scripts/manage.sh schedule-add-verifier -n testnet -a stellarproof --selector 73c457ba
-./scripts/manage.sh execute-add-verifier -n testnet -a stellarproof --selector 73c457ba
-./scripts/manage.sh status -n testnet
+stellar contract invoke --network testnet --source stellarproof --id CCUUSMLUDFY7VRC3WEKBGXMID7BJRVHZUFBTYGGIHSQCHUEKQWA7U3ET -- verifiers --selector 73c457ba
 ```
 
-After `status` reports selector `73c457ba` as active, proof submission can call `StellarProofAttestor.submit_attestation`, which calls the router's `verify(seal, image_id, journal_digest)` before storing the public journal.
+Result:
+
+```json
+{"Active":"CC6TBSFX3YSVB4HG2MITTMWDO3XWMRDX5FCFBWTKSIEIPHGCRSCHZ645"}
+```
+
+This means the router dispatch path for RISC Zero Groth16 selector `73c457ba` is live. Proof submission can call `StellarProofAttestor.submit_attestation`, which calls the router's `verify(seal, image_id, journal_digest)` before storing the public journal.
