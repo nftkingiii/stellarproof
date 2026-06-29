@@ -10,6 +10,7 @@ A business can keep invoice-level data private, run the underwriting policy off-
 - RISC Zero guest and host crates that generate a Groth16 proof on Linux.
 - GitHub Actions proof worker that runs the real prover and publishes `app/proofs/latest-proof.json`.
 - Soroban attestor contract that stores only verified eligible journals.
+- Stellar testnet verifier router and StellarProof attestor deployment documented in `STELLAR_TESTNET.md`.
 - Stellar testnet deploy script for the attestor contract.
 - Railway-ready Node static server.
 
@@ -48,11 +49,12 @@ Working now:
 - Latest proof metadata displayed in the landing page and proof lab.
 - Soroban contract tests using a verifier-router mock.
 - Attestor Wasm build in GitHub Actions.
-- Testnet deployment script for the attestor contract.
+- RISC Zero verifier router deployed on Stellar testnet.
+- StellarProof attestor deployed and initialized on Stellar testnet.
 
-Honest limitation:
+Remaining on-chain step:
 
-- A live Stellar testnet deployment requires the Stellar CLI, a funded testnet identity, and a deployed RISC Zero verifier-router contract ID. This Windows environment does not currently have `stellar` CLI installed, so the deploy script is committed but has not been executed from this machine.
+- Deploy/register the Groth16 verifier entry for selector `73c457ba` in the router, then submit the proof to `StellarProofAttestor.submit_attestation`. See `STELLAR_TESTNET.md`.
 
 ## Run locally
 
@@ -97,6 +99,10 @@ The latest checked-in proof JSON currently includes:
 - journal digest
 - proof text SHA-256
 - GitHub Actions run URL
+
+## Stellar testnet deployment
+
+Current public deployment details are in `STELLAR_TESTNET.md`.
 
 ## Deploy the Soroban attestor to Stellar testnet
 
@@ -152,7 +158,8 @@ The 2-3 minute video should show:
 3. latest RISC Zero proof metadata loaded from `latest-proof.json`,
 4. GitHub Actions proof run,
 5. Soroban attestor contract code calling the verifier router,
-6. the testnet deploy script and the remaining requirement for a funded identity plus verifier-router ID.
+6. the deployed testnet router and attestor IDs in `STELLAR_TESTNET.md`,
+7. the remaining Groth16 verifier registration step for selector `73c457ba`.
 
 ## References
 
@@ -160,3 +167,4 @@ The 2-3 minute video should show:
 - Stellar CLI docs: https://developers.stellar.org/docs/tools/cli
 - RISC Zero zkVM docs: https://dev.risczero.com/api/zkvm/
 - Stellar RISC Zero verifier: https://github.com/NethermindEth/stellar-risc0-verifier
+
