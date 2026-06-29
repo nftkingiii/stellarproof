@@ -52,10 +52,8 @@ Working now:
 - RISC Zero verifier router deployed on Stellar testnet.
 - Groth16 verifier registered in the router for selector `73c457ba`.
 - StellarProof attestor deployed and initialized on Stellar testnet.
-
-Remaining on-chain step:
-
-- Submit the latest proof to `StellarProofAttestor.submit_attestation`. See `STELLAR_TESTNET.md`.
+- Latest RISC Zero proof submitted to `StellarProofAttestor.submit_attestation` on Stellar testnet.
+- Attestation transaction recorded in `STELLAR_TESTNET.md`.
 
 ## Run locally
 
@@ -160,7 +158,7 @@ The 2-3 minute video should show:
 4. GitHub Actions proof run,
 5. Soroban attestor contract code calling the verifier router,
 6. the deployed testnet router, Groth16 verifier, emergency-stop wrapper, and attestor IDs in `STELLAR_TESTNET.md`,
-7. the final proof-submission path into `submit_attestation`.
+7. the final successful `submit_attestation` transaction and attested event.
 
 ## References
 
